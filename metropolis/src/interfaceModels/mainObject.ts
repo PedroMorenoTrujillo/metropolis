@@ -7,7 +7,7 @@ export interface MainObject{
   title: string
   journal: string
   section: string
-  editor: Editor | null
-  yourself: Yourself | null
+  editor: Editor
+  yourself: Yourself
   authors: Author[]
 }

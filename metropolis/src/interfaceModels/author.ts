@@ -10,4 +10,5 @@ export interface Author {
     pictureUrl: string
     profileUrl: string
     affiliations: Affiliations[]
+    show?: boolean
 }

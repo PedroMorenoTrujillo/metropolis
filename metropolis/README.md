@@ -1,4 +1,4 @@
-# metropolis1
+# metropolis
 
 ## Project setup
 ```
