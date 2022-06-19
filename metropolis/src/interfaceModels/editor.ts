@@ -9,5 +9,6 @@ export interface Editor {
   followers: number,
   pictureUrl: string,
   profileUrl: string,
-  affiliations: Affiliations[]
+  affiliations: Affiliations[],
+  show?: boolean
 }

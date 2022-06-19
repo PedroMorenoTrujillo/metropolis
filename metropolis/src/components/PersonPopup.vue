@@ -3,19 +3,19 @@
         <div class="profileContainer">
             <div class="profile">
                 <div class="profileText">
-                    <div class="name">{{ author.fullName }}</div>
-                    <div v-for="affliation in author.affiliations" :key="affliation.id">
+                    <div class="name">{{ person.fullName }}</div>
+                    <div v-for="affliation in person.affiliations" :key="affliation.id">
                         <div class="affliation">{{ affliation.city }}, {{ affliation.country }}</div>
                     </div>
                     <div class="authorMedia">
-                        <span><span class="number">{{ author.publications }}</span> <span
+                        <span><span class="number">{{ person.publications }}</span> <span
                                 class="text">Publications</span></span>
-                        <span><span class="number">{{ author.views }}</span> <span class="text">Views</span></span>
-                        <span><span class="number">{{ author.followers }}</span> <span
+                        <span><span class="number">{{ person.views }}</span> <span class="text">Views</span></span>
+                        <span><span class="number">{{ person.followers }}</span> <span
                                 class="text">Followers</span></span>
                     </div>
                 </div>
-                <img :src="author.pictureUrl" :alt="author.fullName" @error="setAlternative" class="imageContainer"
+                <img :src="person.pictureUrl" :alt="person.fullName" @error="setAlternative" class="imageContainer"
                     v-if="!changeImage" />
                 <div class="imageContainer alternativeText" v-if="changeImage">{{ alternativeText }}</div>
             </div>
@@ -23,21 +23,21 @@
 
 
         <div class="profileLink">
-            <a :href="author.profileUrl" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
+            <a :href="person.profileUrl" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View
                 Profile</a>
         </div>
     </div>
 </template>
 
 <script lang="ts">
+import { Editor, Yourself } from '@/interfaceModels';
 import { defineComponent } from 'vue';
-import { stringifyQuery } from 'vue-router';
 import { Author } from '../interfaceModels/author';
 
 export default defineComponent({
     name: 'AuthorPopup',
     props: {
-        author: { default: () => ({} as Author) }
+        person: { default: () => ({} as Author | Editor | Yourself) }
     },
     data() {
         return {
@@ -47,7 +47,7 @@ export default defineComponent({
     },
     methods: {
         setAlternative(e: any) {
-            let name = this.author.fullName.split(' ')
+            let name = this.person.fullName.split(' ')
             this.alternativeText = name[0][0].toUpperCase() + name[1][0].toUpperCase()
             this.changeImage = !this.changeImage
         }

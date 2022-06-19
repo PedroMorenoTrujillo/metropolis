@@ -12,24 +12,35 @@
         {{ texts.Authors }}
         <div class="author" v-for="(author, index) in data.authors" :key="index">
           <span>{{ index === data.authors.length - 1 ? ', and ' : index === 0 ? '' : ', ' }}
-            <span class="authorName" @click="authorShowProfile(author)"
-              v-click-away="() => { if (author.show) author.show = !author.show }">
+            <span class="authorName" @click="showProfile(author, 'author', index + 1)"
+              v-click-away="() => { dataForPopup = {} as any; popupType = '' }">
               {{ author.fullName }}
             </span><sup>{{ author.affiliations.length }}</sup>
           </span>
-          <div class="popupContainer" v-if="author.show">
-            <author-popup :author="author"></author-popup>
+          <div class="popupContainer" v-if="popupType === 'author' && index + 1 === popupIndex">
+            <person-popup :person="dataForPopup"></person-popup>
           </div>
         </div>
       </div>
       <div class="editor--yourselfContainer">
         <div class="editorContainer">
           {{ texts.Editor }}
-          <span class="editor">{{ data.editor?.fullName }}</span><sup>{{ data.editor?.affiliations.length }}</sup>
+          <span class="editor" @click="showProfile(data.editor, 'editor')"
+            v-click-away="() => { dataForPopup = {} as any; popupType = '' }">{{ data.editor?.fullName }}</span><sup>{{
+                data.editor?.affiliations.length
+            }}</sup>
+          <div class="popupContainer editor" v-if="popupType === 'editor'">
+            <person-popup :person="dataForPopup"></person-popup>
+          </div>
         </div>
         <div class="yourselfContainer">
           {{ texts.Yourself }}
-          <span class="yourself">{{ data.yourself?.fullName }}</span><sup>{{ data.yourself?.affiliations.length }}</sup>
+          <span class="yourself" @click="showProfile(data.yourself, 'yourself')"
+            v-click-away="() => { dataForPopup = {} as any; popupType = '' }">{{ data.yourself?.fullName
+            }}</span><sup>{{ data.yourself?.affiliations.length }}</sup>
+          <div class="popupContainer" v-if="popupType === 'yourself'">
+            <person-popup :person="dataForPopup"></person-popup>
+          </div>
         </div>
       </div>
 
@@ -51,14 +62,14 @@
 
 <script lang="ts">
 import { Texts } from '../enums';
-import { Author, MainObject } from '../interfaceModels';
+import { Author, Editor, MainObject, Yourself } from '../interfaceModels';
 import { defineComponent } from 'vue';
-import AuthorPopup from './AuthorPopup.vue';
+import PersonPopup from './PersonPopup.vue';
 
 export default defineComponent({
   name: 'MainContainer',
   components: {
-    AuthorPopup,
+    PersonPopup,
   },
   props: {
     data: { default: () => ({} as MainObject) }
@@ -67,14 +78,21 @@ export default defineComponent({
     return {
       texts: Texts,
       toggleAffliations: false,
+      dataForPopup: {} as Author | Editor | Yourself,
+      popupType: '',
+      popupIndex: 0 as number
     }
   },
   methods: {
     toogleAffliationsChange() {
       this.toggleAffliations = !this.toggleAffliations;
     },
-    authorShowProfile(author: Author) {
-      author.show = !author.show;
+    showProfile(person: Author | Editor | Yourself, type: string, index?: number) {
+      this.popupIndex = -1
+      if (index) this.popupIndex = index
+      this.popupType = type;
+      person.show = !person.show;
+      this.dataForPopup = person
     },
   },
 
@@ -152,12 +170,25 @@ export default defineComponent({
       font-size: 15px;
       line-height: 22px;
       color: #020202;
+      position: relative;
 
       .editor,
       .yourself {
         display: inline-block;
         font-weight: 300;
         text-decoration: underline;
+        cursor: pointer;
+      }
+
+      .popupContainer {
+        position: absolute;
+        z-index: 1;
+        left: 30%;
+
+        &.editor {
+          left: 30%;
+          top: 50%
+        }
       }
 
     }
