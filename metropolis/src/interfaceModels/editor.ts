@@ -10,5 +10,4 @@ export interface Editor {
   pictureUrl: string,
   profileUrl: string,
   affiliations: Affiliations[],
-  show?: boolean
 }

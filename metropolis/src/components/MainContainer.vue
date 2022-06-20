@@ -13,7 +13,7 @@
         <div class="author" v-for="(author, index) in data.authors" :key="index">
           <span>{{ index === data.authors.length - 1 ? ', and ' : index === 0 ? '' : ', ' }}
             <span class="authorName" @click="showProfile(author, 'author', index + 1)"
-              v-click-away="() => { dataForPopup = {} as any; popupType = '' }">
+              v-click-away="() => cleanProfile()">
               {{ author.fullName }}
             </span><sup>{{ author.affiliations.length }}</sup>
           </span>
@@ -26,7 +26,7 @@
         <div class="editorContainer">
           {{ texts.Editor }}
           <span class="editor" @click="showProfile(data.editor, 'editor')"
-            v-click-away="() => { dataForPopup = {} as any; popupType = '' }">{{ data.editor?.fullName }}</span><sup>{{
+            v-click-away="() => cleanProfile()">{{ data.editor?.fullName }}</span><sup>{{
                 data.editor?.affiliations.length
             }}</sup>
           <div class="popupContainer editor" v-if="popupType === 'editor'">
@@ -36,7 +36,7 @@
         <div class="yourselfContainer">
           {{ texts.Yourself }}
           <span class="yourself" @click="showProfile(data.yourself, 'yourself')"
-            v-click-away="() => { dataForPopup = {} as any; popupType = '' }">{{ data.yourself?.fullName
+            v-click-away="() => cleanProfile()">{{ data.yourself?.fullName
             }}</span><sup>{{ data.yourself?.affiliations.length }}</sup>
           <div class="popupContainer" v-if="popupType === 'yourself'">
             <person-popup :person="dataForPopup"></person-popup>
@@ -91,9 +91,12 @@ export default defineComponent({
       this.popupIndex = -1
       if (index) this.popupIndex = index
       this.popupType = type;
-      person.show = !person.show;
       this.dataForPopup = person
     },
+    cleanProfile(){
+      this.dataForPopup = {} as any; 
+      this.popupType = ''
+    }
   },
 
 });

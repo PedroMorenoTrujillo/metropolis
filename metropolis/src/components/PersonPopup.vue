@@ -62,9 +62,7 @@ export default defineComponent({
     align-items: flex-start;
     padding: 16px;
     gap: 16px;
-    //position: absolute;
     min-width: 385px;
-    //bottom: 45px;
     background: #FFFFFF;
     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.08), 0px 14px 28px rgba(0, 0, 0, 0.1);
 
@@ -92,7 +90,7 @@ export default defineComponent({
                     font-size: 13px;
                     line-height: 20px;
                     color: #555555;
-                    min-height: 40px;
+                    min-height: 30px;
                 }
 
                 .authorMedia {

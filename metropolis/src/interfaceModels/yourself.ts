@@ -10,5 +10,4 @@ export interface Yourself{
   pictureUrl: string
   profileUrl: string
   affiliations: Affiliations[]
-  show?: boolean
 }
