@@ -1,14 +1,17 @@
 <template>
   <div class="container">
     <div @click="collapsed = !collapsed" :style="{ 'margin-left': `${depth * 20}px` }" class="favourites">
-      <span>{{ favourites.name }}</span>
-      <span v-if="hasNextElement && !collapsed">
-        <i class="fa-solid fa-sort-down"></i>
-      </span>
-      <span v-else-if="hasNextElement && collapsed">
-        <i class="fa-solid fa-sort-up"></i>
-      </span>
-      
+      <div class="wrapper">
+        <span class="name">{{ favourites.name }}</span>
+        <span v-if="hasNextElement && !collapsed" class="icon">
+          <i class="fa-solid fa-sort-down"></i>
+        </span>
+        <span v-else-if="hasNextElement && collapsed" class="icon">
+          <i class="fa-solid fa-sort-up"></i>
+        </span>
+      </div>
+
+
     </div>
     <template v-if="collapsed">
       <tree-nav v-for="item in favourites.favourites" :key="item.name" :favourites="item" :depth="depth + 1"></tree-nav>
@@ -40,8 +43,8 @@ export default defineComponent({
       this.collapsed = !this.collapsed
     }
   },
-  computed:{
-    hasNextElement(){
+  computed: {
+    hasNextElement() {
       return this.favourites.favourites
     }
   }
@@ -56,8 +59,30 @@ export default defineComponent({
 .favourites {
   text-align: left;
   line-height: 25px;
-  text-decoration: underline;
-  font-weight: 600;
+
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  .wrapper {
+    background: black;
+    color: white;
+    box-sizing: border-box;
+    width: auto;
+    border-radius: 13px;
+    padding: 5px 10px 5px 8px;
+    margin-top: 5px;
+
+    .name {
+      font-weight: 500;
+    }
+
+    .icon {
+      font-weight: normal;
+      margin-left: 5px;
+    }
+  }
+
+
 }
 </style>

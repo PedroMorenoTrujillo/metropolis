@@ -4,7 +4,7 @@
 
 <style lang="scss">
 body{
-  background-color: grey;
+  background-color: rgb(250, 248, 248);
   color: black;
   font-weight: bold;
 }
