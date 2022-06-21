@@ -56,14 +56,15 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import '../assets/global.scss';
 .popupContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 16px;
     gap: 16px;
-    min-width: 385px;
-    background: #FFFFFF;
+    min-width: 24rem;
+    background: $cardBackground;
     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.08), 0px 14px 28px rgba(0, 0, 0, 0.1);
 
     .profileContainer {
@@ -76,20 +77,20 @@ export default defineComponent({
             justify-content: space-between;
 
             .profileText {
-                min-height: 97px;
+                min-height: 6.6rem;
 
                 .name {
-                    font-size: 18px;
+                    font-size: 1.125rem;
                     line-height: 25px;
-                    color: #020202;
-                    min-height: 25px;
+                    color: $black;
+                    min-height: 1.563rem;
                 }
 
                 .affliation {
                     font-weight: 300;
-                    font-size: 13px;
+                    font-size: 0.813rem;
                     line-height: 20px;
-                    color: #555555;
+                    color: $grey;
                     min-height: 30px;
                 }
 
@@ -99,20 +100,20 @@ export default defineComponent({
                     align-items: flex-start;
                     padding: 4px 0px 0px;
                     gap: 16px;
-                    min-height: 24px;
+                    min-height: 1.5rem;
 
                     .number {
                         font-weight: 600;
-                        font-size: 13px;
+                        font-size: 0.813rem;
                         line-height: 20px;
-                        color: #00A0D2;
+                        color: $blue;
                     }
 
                     .text {
                         font-weight: 300;
                         font-size: 13px;
                         line-height: 20px;
-                        color: #020202;
+                        color: $black;
                     }
                 }
             }
@@ -124,13 +125,13 @@ export default defineComponent({
                 right: 4%;
                 top: 9%;
                 bottom: 0%;
-                border: 1px solid #E0E0E0;
-                border-radius: 100px;
+                border: 1px solid $borderLight;
+                border-radius: 6.25rem;
 
                 &.alternativeText {
                     background: rgba(0, 160, 210, 0.05);
-                    color: #00A0D2;
-                    border: 1px solid #00A0D2;
+                    color: $blue;
+                    border: 1px solid $borderBlue;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -151,7 +152,7 @@ export default defineComponent({
         text-transform: uppercase;
 
         a {
-            color: #00A0D2;
+            color: $borderBlue;
         }
 
     }

@@ -104,17 +104,15 @@ export default defineComponent({
 
 
 <style scoped lang="scss">
+@import '../assets/global.scss';
 .mainContainer {
-  width: 593px;
-  height: 22px;
-
   .topTitle {
     font-family: 'Museo Sans', Helvetica, Arial;
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 22px;
-    color: #020202;
+    color: $black;
   }
 
   .cardContainer {
@@ -124,32 +122,32 @@ export default defineComponent({
     align-items: flex-start;
     padding: 24px 32px;
     gap: 8px;
-    width: 659px;
-    min-height: 299px;
-    background: #FFFFFF;
+    width: 41rem;
+    min-height: 18.75rem;
+    background: $cardBackground;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     font-family: 'Museo Sans', Helvetica, Arial;
     font-style: normal;
     font-weight: 300;
 
     .type {
-      font-size: 15px;
-      line-height: 21px;
-      color: #555555;
+      font-size: .93rem;
+      line-height: 1.31rem;
+      color: $grey;
     }
 
     .title {
       font-weight: 600;
-      font-size: 20px;
-      line-height: 28px;
-      color: #020202;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      color: $black;
     }
 
     .authorsContainer {
       font-weight: 600;
-      font-size: 15px;
-      line-height: 22px;
-      color: #020202;
+      font-size: 0.93rem;
+      line-height: 1.37rem;
+      color: $black;
 
       .author {
         display: inline-block;
@@ -170,9 +168,9 @@ export default defineComponent({
 
     .editor--yourselfContainer {
       font-weight: 600;
-      font-size: 15px;
+      font-size: 0.938rem;
       line-height: 22px;
-      color: #020202;
+      color: $black;
       position: relative;
 
       .editor,
@@ -198,11 +196,11 @@ export default defineComponent({
 
     .affliationsContainer {
       font-weight: 400;
-      font-size: 13px;
+      font-size: 0.813rem;
       line-height: 22px;
 
       .affliationsTitle {
-        color: #0084AD;
+        color: $blue;
         cursor: pointer;
       }
 
@@ -211,25 +209,21 @@ export default defineComponent({
         display: none;
         cursor: pointer;
         font-weight: 300;
-        font-size: 15px;
+        font-size: 0.93rem;
         line-height: 20px;
-        color: #555555;
+        color: $grey;
 
         &.open {
           display: block;
-        }
-
-        .sup {
-          //color: #020202;
         }
       }
     }
 
     .journal--sectionContainer {
       font-weight: 400;
-      font-size: 15px;
+      font-size: 0.93rem;
       line-height: 21px;
-      color: #020202;
+      color: $black;
     }
   }
 }

@@ -1,8 +1,39 @@
-
-
-body{
-    background: #E5E5E5;
-    position: relative;
-    width: 1366px;
-    height: 800px;
+@import "./variables.scss";
+@font-face {
+  font-family: "Museo Sans";
+  src: url("https://9d0dd7a648345f19af83-877d2ecaf11b88d5e17327c758e17ef6.ssl.cf2.rackcdn.com/museo-sans-1.0.1/css/museo-sans.css");
 }
+
+body {
+  background: $background;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 750px) {
+  .mainView {
+    min-width: 80% !important;
+  }
+  .mainContainer {
+    .topTitle {
+      width: 80%;
+      line-height: 30px !important;
+    }
+    .cardContainer {
+      width: 80% !important;
+    }
+
+    .editor--yourselfContainer .popupContainer {
+      left: -20% !important;
+    }
+    .cardContainer .authorsContainer .author .popupContainer {
+      transform: translate(-25%, 0%);
+    }
+  }
+}
+
+

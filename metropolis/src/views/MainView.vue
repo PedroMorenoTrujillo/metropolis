@@ -1,5 +1,5 @@
 <template> 
-  <MainContainer :data="data" class="mainView"/>
+  <MainContainer :data="data" class="mainView" v-if="data"/>
 </template>
 
 <script lang="ts">
@@ -32,12 +32,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
-  gap: 24px;
-  position: absolute;
-  width: 659px;
-  height: 430px;
-  left: 354px;
-  top: 128px;
+  padding: 0;
+  gap: 1.5rem;
+  min-width: 41rem;
+  min-height: 27rem;
 }
 </style>
